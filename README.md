@@ -1,5 +1,5 @@
-# express-typescript-skeleton
-Simple skeleton for TypeScript based Express.js application
+# Message Sender App
+Simple message sender app between users and groups
 
 Run:
 docker-compose up
