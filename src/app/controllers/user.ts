@@ -38,7 +38,8 @@ export default {
       const user: Partial<User> = {
         email: req.body.email,
         firstName: req.body.firstName,
-        lastName: req.body.lastName
+        lastName: req.body.lastName,
+        password: req.body.password
       };
       await database(Table.users).insert(user);
       res.sendStatus(200);

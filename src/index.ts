@@ -2,6 +2,7 @@ import * as express from 'express';
 import * as createMiddleware from 'swagger-express-middleware';
 import { SwaggerMiddleware } from 'swagger-express-middleware';
 import router from './app/routers';
+import * as bodyParser from 'body-parser';
 
 const app = express();
 const { PORT = 3000 } = process.env;
@@ -17,6 +18,9 @@ createMiddleware('config/swagger.json', app, (err, middleware: SwaggerMiddleware
     middleware.parseRequest(),
     middleware.validateRequest()
   );
+
+  app.use(bodyParser.urlencoded({extended: false}));
+  app.use(bodyParser.json());
 
   app.use(router);
 
