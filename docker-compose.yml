@@ -1,0 +1,42 @@
+version: "2"
+services:
+    express-typescript-skeleton-db:
+        container_name: express-typescript-skeleton-db
+        image: mysql:5.7
+        environment:
+            MYSQL_DATABASE: "express-typescript-skeleton-db"
+            MYSQL_USER: "root"
+            MYSQL_PASSWORD: "Flanker1975"
+            MYSQL_ROOT_PASSWORD: "Flanker1975"
+        expose:
+            - "3307"
+        ports:
+            - "3307:3306"
+        volumes:
+            - express-typescript-skeleton-db-data:/var/lib/mysql
+        networks:
+            inner:
+                aliases:
+                    - express-typescript-skeleton-db
+    express-typescript-skeleton:
+        container_name: express-typescript-skeleton
+        build:
+            context: ./
+            dockerfile: Dockerfile.development
+        expose:
+            - "3000"
+        ports:
+            - "3000:3000"
+        depends_on:
+            - express-typescript-skeleton-db
+        volumes:
+            - "./:/usr/src/app"
+            - "~/.ssh:/root/.ssh"
+        networks:
+            inner:
+                aliases:
+                    - express-typescript-skeleton
+networks:
+    inner: {}
+volumes:
+    express-typescript-skeleton-db-data: {}

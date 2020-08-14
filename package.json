@@ -1,0 +1,41 @@
+{
+  "name": "express-typescript-skeleton",
+  "author": "Zsolt Tasnádi",
+  "license": "ISC",
+  "version": "1.2.0",
+  "description": "",
+  "scripts": {
+    "build": "webpack",
+    "dev": "concurrently \"webpack -w\" \"nodemon build/bundle.js\"",
+    "start": "node build/bundle.js",
+    "db:migrate": "node ./node_modules/.bin/knex migrate:up --knexfile=config/database.json",
+    "db:rollback": "node ./node_modules/.bin/knex migrate:rollback --knexfile=config/database.json",
+    "db:seed": "node ./node_modules/.bin/knex seed:run --knexfile=config/database.json"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.2",
+    "@types/node": "^12.12.54",
+    "concurrently": "^4.1.2",
+    "ts-loader": "^6.2.1",
+    "tsoa": "^3.2.1",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "@types/knex": "^0.16.1",
+    "@types/swagger-express-middleware": "^1.0.10",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.20.15",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.4",
+    "swagger-express-middleware": "^2.0.5",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "main": "src/index.ts"
+}
